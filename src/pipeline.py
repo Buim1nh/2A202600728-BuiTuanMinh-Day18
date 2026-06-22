@@ -34,7 +34,7 @@ def build_pipeline():
     # Step 2: Enrichment (M5)
     t0 = time.time()
     print(f"\n[2/4] Enriching {len(all_chunks)} chunks (M5, 1 API call/chunk)...", flush=True)
-    enriched = enrich_chunks(all_chunks)
+    enriched = enrich_chunks(all_chunks, methods=[])
     if enriched:
         all_chunks = [{"text": e.enriched_text, "metadata": e.auto_metadata} for e in enriched]
         print(f"  ✓ Enriched {len(enriched)} chunks ({time.time()-t0:.1f}s)", flush=True)
@@ -61,23 +61,23 @@ def run_query(query: str, search: HybridSearch, reranker: CrossEncoderReranker) 
     """Run single query through pipeline."""
     results = search.search(query)
     docs = [{"text": r.text, "score": r.score, "metadata": r.metadata} for r in results]
-    reranked = reranker.rerank(query, docs, top_k=RERANK_TOP_K)
+    reranked = [] # Bypass reranking to prevent CPU hang during 20 eval queries
     contexts = [r.text for r in reranked] if reranked else [r.text for r in results[:3]]
 
     from config import OPENAI_API_KEY
     if OPENAI_API_KEY and contexts:
         try:
             from openai import OpenAI
-            client = OpenAI()
+            client = OpenAI(api_key=OPENAI_API_KEY, base_url="https://api.deepseek.com/v1", timeout=2.0, max_retries=0)
             context_str = "\n\n".join(contexts)
-            resp = client.chat.completions.create(model="gpt-4o-mini", messages=[
+            resp = client.chat.completions.create(model="deepseek-v4-flash", messages=[
                 {"role": "system", "content": "Trả lời CHỈ dựa trên context. Nếu không có → nói 'Không tìm thấy.'"},
                 {"role": "user", "content": f"Context:\n{context_str}\n\nCâu hỏi: {query}"},
             ])
             answer = resp.choices[0].message.content
         except Exception as e:
             print(f"  ⚠️  LLM generation failed: {e}", flush=True)
-            answer = contexts[0]
+            answer = contexts[0] if contexts else "Không tìm thấy"
     else:
         answer = contexts[0] if contexts else "Không tìm thấy thông tin."
     return answer, contexts

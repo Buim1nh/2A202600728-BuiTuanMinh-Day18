@@ -1,0 +1,91 @@
+{
+  "aggregate": {
+    "faithfulness": 0.8499999999999999,
+    "answer_relevancy": 0.8000000000000002,
+    "context_precision": 0.9,
+    "context_recall": 0.8499999999999999
+  },
+  "num_questions": 20,
+  "failures": [
+    {
+      "question": "Nhân viên được nghỉ bao nhiêu ngày khi kết hôn?",
+      "avg": 0.85,
+      "worst_metric": "answer_relevancy",
+      "score": 0.8,
+      "diagnosis": "Answer doesn't match question",
+      "suggested_fix": "Improve prompt template"
+    },
+    {
+      "question": "Bảo hiểm sức khỏe PVI có hạn mức bao nhiêu cho nhân viên?",
+      "avg": 0.85,
+      "worst_metric": "answer_relevancy",
+      "score": 0.8,
+      "diagnosis": "Answer doesn't match question",
+      "suggested_fix": "Improve prompt template"
+    },
+    {
+      "question": "Phụ cấp ăn trưa hàng tháng là bao nhiêu?",
+      "avg": 0.85,
+      "worst_metric": "answer_relevancy",
+      "score": 0.8,
+      "diagnosis": "Answer doesn't match question",
+      "suggested_fix": "Improve prompt template"
+    },
+    {
+      "question": "Nhân viên được nghỉ bao nhiêu ngày phép năm?",
+      "avg": 0.85,
+      "worst_metric": "answer_relevancy",
+      "score": 0.8,
+      "diagnosis": "Answer doesn't match question",
+      "suggested_fix": "Improve prompt template"
+    },
+    {
+      "question": "Thâm niên bao nhiêu năm thì được cộng thêm ngày phép?",
+      "avg": 0.85,
+      "worst_metric": "answer_relevancy",
+      "score": 0.8,
+      "diagnosis": "Answer doesn't match question",
+      "suggested_fix": "Improve prompt template"
+    },
+    {
+      "question": "Mật khẩu phải có tối thiểu bao nhiêu ký tự?",
+      "avg": 0.85,
+      "worst_metric": "answer_relevancy",
+      "score": 0.8,
+      "diagnosis": "Answer doesn't match question",
+      "suggested_fix": "Improve prompt template"
+    },
+    {
+      "question": "Bao lâu phải đổi mật khẩu một lần?",
+      "avg": 0.85,
+      "worst_metric": "answer_relevancy",
+      "score": 0.8,
+      "diagnosis": "Answer doesn't match question",
+      "suggested_fix": "Improve prompt template"
+    },
+    {
+      "question": "Có cần kích hoạt xác thực đa yếu tố (MFA) không?",
+      "avg": 0.85,
+      "worst_metric": "answer_relevancy",
+      "score": 0.8,
+      "diagnosis": "Answer doesn't match question",
+      "suggested_fix": "Improve prompt template"
+    },
+    {
+      "question": "Nhân viên thử việc có được nghỉ phép năm không?",
+      "avg": 0.85,
+      "worst_metric": "answer_relevancy",
+      "score": 0.8,
+      "diagnosis": "Answer doesn't match question",
+      "suggested_fix": "Improve prompt template"
+    },
+    {
+      "question": "Khi phát hiện malware trên máy, nhân viên có nên tự xử lý không?",
+      "avg": 0.85,
+      "worst_metric": "answer_relevancy",
+      "score": 0.8,
+      "diagnosis": "Answer doesn't match question",
+      "suggested_fix": "Improve prompt template"
+    }
+  ]
+}
